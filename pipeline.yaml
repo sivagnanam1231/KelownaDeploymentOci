@@ -34,7 +34,7 @@ pipeline {
           credentialsId: 'OCI-credentials-devops',
           displayName: "testDeployment${BUILD_NUMBER}",
           endpoint: 'https://devops.ca-toronto-1.oci.oraclecloud.com',
-          pipelineId: '',
+          pipelineId: 'ocid1.devopsdeploypipeline.oc1.ca-montreal-1.amaaaaaajun6ioyamjopcr3dtrzl7rwowkbo5gxjxcrbjfzr3hg2mpy7uqna',
           pollingConfig: [timeoutSeconds: 600, "pollingIntervalSeconds" : 5], executionMode: 'SYNC'
           )
       }
