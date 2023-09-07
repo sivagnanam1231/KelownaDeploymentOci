@@ -14,7 +14,7 @@ pipeline {
     }
     stage("OCI Upload Artifact") {
         steps {
-          OCIUploadArtifact(credentialsId: 'OCI-credentials-devops',
+          OCIUploadArtifact(credentialsId: 'oci-compute-credentials',
           uploadArtifactDetailsList: [[artifactPath: 'public.tar.gz',
           repositoryId: 'ocid1.artifactrepository.oc1.ca-montreal-1.0.amaaaaaajun6ioyamhhavyd6gjxtagwxtxbazwai2ihvniwjyksqbthp2ada',
           repositoryType: 'GENERIC',
@@ -31,7 +31,7 @@ pipeline {
     stage('Trigger Deployment') {
         steps {
           OCIDeployment(argumentVal: JsonOutput.toJson(args_map),
-          credentialsId: 'OCI-credentials-devops',
+          credentialsId: 'oci-compute-credentials',
           displayName: "testDeployment${BUILD_NUMBER}",
           endpoint: 'https://devops.ca-toronto-1.oci.oraclecloud.com',
           pipelineId: 'ocid1.devopsdeploypipeline.oc1.ca-montreal-1.amaaaaaajun6ioyamjopcr3dtrzl7rwowkbo5gxjxcrbjfzr3hg2mpy7uqna',
