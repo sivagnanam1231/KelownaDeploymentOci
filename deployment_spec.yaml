@@ -14,12 +14,12 @@ steps:
     command: yum update
     runAs: root
     timeoutInSeconds: 300
-    - stepType: Command 
+  - stepType: Command 
     name: HTTPD_Install
     command: yum install httpd -y 
     runAs: root
     timeoutInSeconds: 300
-    - stepType: Command 
+  - stepType: Command 
     name: HTTPD_Start
     command: service httpd start
     runAs: root
