@@ -1,3 +1,4 @@
+
 version: 1.0 
 component: deployment 
 runAs: root
@@ -16,7 +17,7 @@ steps:
     timeoutInSeconds: 300
   - stepType: Command 
     name: HTTPD_Install
-    command: yum install httpd -y 
+    command: yum install httpd -y
     runAs: root
     timeoutInSeconds: 300
   - stepType: Command 
@@ -27,6 +28,16 @@ steps:
   - stepType: Command 
     name: CopyFiles
     command: cp -a /tmp/site/public/. /var/www/html/
+    runAs: root
+    timeoutInSeconds: 300
+  - stepType: Command 
+    name: OpenFirewallPort
+    command: firewall-cmd --zone=public --permanent --add-port=80/tcp
+    runAs: root
+    timeoutInSeconds: 300
+  - stepType: Command 
+    name: ReloadFirewall
+    command: firewall-cmd --reload
     runAs: root
     timeoutInSeconds: 300
   - stepType: Command 
